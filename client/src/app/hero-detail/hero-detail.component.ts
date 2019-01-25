@@ -13,6 +13,8 @@ import { HeroService }  from '../hero.service';
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
 
+  heroFile: File;
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -33,8 +35,12 @@ export class HeroDetailComponent implements OnInit {
     this.location.back();
   }
 
- save(): void {
-    this.heroService.updateHero(this.hero)
+  save(): void {
+    this.heroService.updateHero(this.hero, this.heroFile)
       .subscribe(() => this.goBack());
+  }
+
+  fileChosen(event: Event & {target: HTMLInputElement}) {
+    this.heroFile = event.target.files[0];
   }
 }

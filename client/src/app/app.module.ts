@@ -4,6 +4,7 @@ import { FormsModule }    from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from "@angular/fire";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 
 import { environment } from "../environments/environment";
 
@@ -17,11 +18,13 @@ import { HeroesComponent }      from './heroes/heroes.component';
 import { HeroSearchComponent }  from './hero-search/hero-search.component';
 import { MessagesComponent }    from './messages/messages.component';
 import { AuthInterceptor } from "./auth.interceptor";
+import { HeroImageComponent } from './hero-image/hero-image.component';
 
 @NgModule({
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    AngularFireStorageModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -33,7 +36,8 @@ import { AuthInterceptor } from "./auth.interceptor";
     HeroesComponent,
     HeroDetailComponent,
     MessagesComponent,
-    HeroSearchComponent
+    HeroSearchComponent,
+    HeroImageComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
