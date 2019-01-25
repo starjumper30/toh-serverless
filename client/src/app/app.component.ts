@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { Observable } from "rxjs";
+
+import { HelloWorldService } from "./hello-world.service";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +13,10 @@ import { auth } from 'firebase/app';
 export class AppComponent {
   title = 'Tour of Heroes';
 
-  constructor(readonly afAuth: AngularFireAuth) {
+  greeting: Observable<string>;
+
+  constructor(readonly afAuth: AngularFireAuth, private helloSvc: HelloWorldService) {
+    this.greeting = this.helloSvc.callHelloWorldFunction();
   }
 
   login() {

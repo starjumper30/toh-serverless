@@ -19,7 +19,9 @@ export const environment = {
     databaseURL: '<your-database-URL>',
     projectId: '<your-project-id>',
     storageBucket: '<your-storage-bucket>',
-    messagingSenderId: '<your-messaging-sender-id>'
+    messagingSenderId: '<your-messaging-sender-id>',
+    cloudFunctionsURL: 'http://localhost:5000/<your-project-id>/us-central1/'
+    // cloudFunctionsURL: 'https://us-central1-<your-project-id>.cloudfunctions.net/'
   }
 };
 
