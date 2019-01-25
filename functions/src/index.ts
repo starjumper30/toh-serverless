@@ -4,3 +4,4 @@ admin.initializeApp();
 
 export * from './hello-world';
 export * from './heroes';
+export * from './file-uploaded';
