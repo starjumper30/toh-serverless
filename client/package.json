@@ -7,7 +7,7 @@
     "lint": "tslint ./src/**/*.ts -t verbose",
     "start": "ng serve",
     "test": "ng test",
-    "build": "ng build --prod",
+    "build": "ng build",
     "e2e": "ng e2e",
     "ng": "ng"
   },
