@@ -7,8 +7,6 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 
 import { environment } from "../environments/environment";
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppRoutingModule }     from './app-routing.module';
 
@@ -27,14 +25,7 @@ import { AuthInterceptor } from "./auth.interceptor";
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule,
-
-    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
-    // and returns simulated server responses.
-    // Remove it when a real server is ready to receive requests.
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false, passThruUnknownUrl: true }
-    )
+    HttpClientModule
   ],
   declarations: [
     AppComponent,
