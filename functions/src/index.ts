@@ -1,8 +1,18 @@
 import * as functions from 'firebase-functions';
 
-// Start writing Firebase Functions
-// https://firebase.google.com/docs/functions/typescript
+import * as cors from 'cors';
+import * as express from 'express';
 
-export const helloWorld = functions.https.onRequest((request, response) => {
- response.send("Hello from Firebase!");
+const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
+
+const app = express();
+const corsMiddleware = cors({
+  origin: ['http://localhost:4200', `https://${firebaseConfig.projectId}.firebaseapp.com`]
 });
+app.use(corsMiddleware);
+
+app.get(['', '/'], (request, response) => {
+  response.json("Hello from Firebase!");
+});
+
+export const helloWorld = functions.https.onRequest(app);
